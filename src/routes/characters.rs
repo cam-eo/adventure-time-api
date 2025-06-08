@@ -1,7 +1,5 @@
-use crate::state::AppState;
 use axum::{Json, Router, routing::get};
 use serde::Serialize;
-use std::sync::Arc;
 
 #[derive(Serialize)]
 struct Character {
@@ -22,6 +20,6 @@ async fn characters() -> Json<Vec<Character>> {
     ])
 }
 
-pub fn routes(_state: Arc<AppState>) -> Router {
+pub fn routes() -> Router {
     Router::new().route("/", get(characters))
 }
